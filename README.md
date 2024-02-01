@@ -2,6 +2,6 @@
 
 
 ## agentgroup chats folder
- --- Contains relevaant notebooks from autogen
+ --- Contains relevant notebooks from autogen
 ## persona model folder
  --- Contains relvant notebooks created regarding personal model creation
