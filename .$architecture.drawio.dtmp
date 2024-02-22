@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2024-02-09T02:55:32.773Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/23.0.2 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="Ksbv9pxbn6iYtRTWdQqI" version="23.0.2" type="device">
+<mxfile host="Electron" modified="2024-02-09T01:57:50.380Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/23.0.2 Chrome/120.0.6099.109 Electron/28.1.0 Safari/537.36" etag="guPCfU792vD9CcadjzdT" version="23.0.2" type="device">
   <diagram name="Page-1" id="4ybeOwxGk_2Oms44eabE">
-    <mxGraphModel dx="969" dy="632" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1193" dy="909" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -29,10 +29,10 @@
           <mxGeometry x="1620" y="380" width="220" height="220" as="geometry" />
         </mxCell>
         <mxCell id="ZF0MTzcJXiSA46bS5pOD-8" value="Retriever Agent - MemGPT&lt;br&gt;- System message:&lt;br&gt;Retrieves from previous messages and context&lt;br&gt;Retrieves preferences and facts from chats&lt;br&gt;Can also retrieve from docs" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
-          <mxGeometry x="1195" y="80" width="220" height="220" as="geometry" />
+          <mxGeometry x="1170" y="90" width="220" height="220" as="geometry" />
         </mxCell>
         <mxCell id="ZF0MTzcJXiSA46bS5pOD-9" value="Retriever Agent - Qdrant&lt;br&gt;- System message:&lt;br&gt;Retrieves docs" style="whiteSpace=wrap;html=1;aspect=fixed;" vertex="1" parent="1">
-          <mxGeometry x="1480" y="70" width="220" height="220" as="geometry" />
+          <mxGeometry x="1460" y="90" width="220" height="220" as="geometry" />
         </mxCell>
         <mxCell id="ZF0MTzcJXiSA46bS5pOD-11" value="" style="strokeWidth=2;html=1;shape=mxgraph.flowchart.annotation_2;align=left;labelPosition=right;pointerEvents=1;rotation=90;" vertex="1" parent="1">
           <mxGeometry x="1280" y="-460" width="50" height="1580" as="geometry" />

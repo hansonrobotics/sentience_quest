@@ -1,4 +1,5 @@
 #file adapted from autogen repo
+#we'll be checking how to attach a GraphDB to MemGPT agents https://memgpt.readme.io/docs/data_sources
 import autogen
 from openai import OpenAI
 import json
@@ -7,6 +8,7 @@ import dotenv
 
 from autogen import ConversableAgent, UserProxyAgent
 from autogen.agentchat.contrib.capabilities.teachability import Teachability
+from memgpt.autogen.memgpt_agent import create_memgpt_autogen_agent_from_config
 
 #long context  handling: https://github.com/microsoft/autogen/blob/main/notebook/agentchat_capability_long_context_handling.ipynb
 #autogen autobuild agents multi agents: https://github.com/microsoft/autogen/blob/main/notebook/autobuild_agent_library.ipynb
@@ -44,7 +46,7 @@ config_list_gpt4 = autogen.config_list_from_json(
     },
 )
 
-##Construct AGENTS
+##Construct AGENTS for Autogen
 
 gpt4_config = {
     "cache_seed": 42,  # change the cache_seed for different trials
@@ -93,6 +95,43 @@ critic = autogen.AssistantAgent(
     system_message="Critic. Double check plan, claims, code from other agents and provide feedback. Check whether the plan includes adding verifiable info such as source URL.",
     llm_config=gpt4_config,
 )
+
+## Settings for MemGPT AutoGen agent
+
+
+# create a config for the MemGPT AutoGen agent
+config_list_memgpt = [
+    {
+        "model": "gpt-4",
+        "context_window": 8192,
+        "preset": "memgpt_chat",  # note: you can change the preset here
+        # OpenAI specific
+        "model_endpoint_type": "openai",
+        "openai_key": config_value,
+    },
+]
+llm_config_memgpt = {"config_list": config_list_memgpt, "seed": 42}
+
+# there are some additional options to do with how you want the interface to look (more info below)
+interface_kwargs = {
+    "debug": False,
+    "show_inner_thoughts": True,
+    "show_function_outputs": False,
+}
+
+# then pass the config to the constructor
+memgpt_autogen_agent = create_memgpt_autogen_agent_from_config(
+    "MemGPT_agent",
+    llm_config=llm_config_memgpt,
+    system_message=f"Your desired MemGPT persona",
+    interface_kwargs=interface_kwargs,
+    default_auto_reply="...",
+    skip_verify=False,  # NOTE: you should set this to True if you expect your MemGPT AutoGen agent to call a function other than send_message on the first turn
+    auto_save=False,  # NOTE: set this to True if you want the MemGPT AutoGen agent to save its internal state after each reply - you can also save manually with .save()
+)
+
+
+## Construct GroupChatManager
 groupchat = autogen.GroupChat(
     agents=[user_proxy, engineer, scientist, planner, executor, critic], messages=[], max_round=50
 )
