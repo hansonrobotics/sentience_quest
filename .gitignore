@@ -2,3 +2,5 @@
 .env
 .env.*
 README.md
+cache
+cache.*
